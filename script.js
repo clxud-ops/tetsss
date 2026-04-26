@@ -55,4 +55,46 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ── Обработчик кнопки ── */
     sortBtn.addEventListener("click", () => {
         const inputs = inputBody.querySelectorAll("input");
-        const numbers
+        const numbers = [];
+
+        // Собираем числа, пропуская пустые
+        inputs.forEach((inp) => {
+            const val = inp.value.trim();
+            if (val !== "") {
+                numbers.push(Number(val));
+            }
+        });
+
+        if (numbers.length === 0) {
+            outputBody.innerHTML = `
+                <tr>
+                    <td colspan="2" style="color:#f87171;">
+                        Введите хотя бы одно число
+                    </td>
+                </tr>`;
+            return;
+        }
+
+        // Сортируем
+        const sorted = mergeSort(numbers);
+
+        // Рисуем таблицу
+        outputBody.innerHTML = "";
+        sorted.forEach((num, idx) => {
+            const tr = document.createElement("tr");
+            tr.style.animationDelay = `${idx * 0.05}s`;
+
+            const tdIdx   = document.createElement("td");
+            tdIdx.className = "index-col";
+            tdIdx.textContent = idx + 1;
+
+            const tdVal   = document.createElement("td");
+            tdVal.className = "value-col";
+            tdVal.textContent = num;
+
+            tr.appendChild(tdIdx);
+            tr.appendChild(tdVal);
+            outputBody.appendChild(tr);
+        });
+    });
+});
