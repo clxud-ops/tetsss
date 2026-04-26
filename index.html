@@ -3,30 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Базовый шаблон HTML5 страницы">
-    <title>Мой первый сайт</title>
-    <!-- Подключение CSS -->
+    <meta name="description" content="Сортировка чисел">
+    <title>Сортировка</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Добро пожаловать!</h1>
-        <p>Это стартовый шаблон для вашего нового проекта</p>
+        <h1>Сортировка чисел</h1>
+        <p>Введите 10 чисел, нажмите «Сортировать» и увидите результат</p>
     </header>
 
     <main>
+        <!-- ====== Таблица ввода ====== -->
         <section>
-            <h2>О проекте</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti accusamus voluptates quis! Sit, iste. Qui reprehenderit expedita optio vitae dicta sit saepe ipsam officiis provident, excepturi blanditiis quos nobis dolorum?</p>
-            <p>Здесь можно разместить основной контент. Шаблон использует семантическую вёрстку, CSS-переменные и адаптирован под мобильные устройства.</p>
-            <a href="#" class="btn">Начать работу</a>
+            <h2>Введите числа</h2>
+            <table class="input-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Число</th>
+                    </tr>
+                </thead>
+                <tbody id="inputBody">
+                    <!-- генерируется через JS -->
+                </tbody>
+            </table>
+            <button id="sortBtn" class="btn">Сортировать</button>
         </section>
+
+        <!-- ====== Таблица результата ====== -->
         <section>
-            <table>
-                <tr><th></th></tr>
-                <tr><th></th></tr>
-                <tr><th></th></tr>
-                <tr><th></th></tr>
+            <h2>Отсортированный результат</h2>
+            <table class="output-table">
+                <thead>
+                    <tr>
+                        <th>Позиция</th>
+                        <th>Число</th>
+                    </tr>
+                </thead>
+                <tbody id="outputBody">
+                    <tr><td colspan="2">Нажмите «Сортировать» для отображения</td></tr>
+                </tbody>
             </table>
         </section>
     </main>
@@ -35,7 +52,6 @@
         <p>&copy; 2026 Мой проект. Все права защищены.</p>
     </footer>
 
-    <!-- Подключение JS (defer гарантирует выполнение после загрузки HTML) -->
     <script src="script.js" defer></script>
 </body>
 </html>
